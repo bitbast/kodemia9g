@@ -1,0 +1,45 @@
+header{
+    background-color:aqua;
+    border: 2px solid pink;  
+}
+nav{
+    background-color:#FF33F9;
+    height: 1cm;
+    width: 17cm;
+    border: 2px solid pink;
+    margin: 6px;    
+    margin-left: 20px;
+} 
+section{
+    height: 10cm;
+    width: 67%;
+    background-color: #78BDF9;
+    border: 2px solid blue;
+    margin-top: .5cm;
+}
+article{
+    background-color:#F8D0FF;
+    height: 2.2cm;
+    width: 90%;   
+    margin-left: 20px;
+}
+div{
+position: relative;
+bottom: 10cm;
+left: 13cm;
+height: 10cm;
+width: 30%;
+background-color: #F29CC9;
+border: 2px solid black;
+}
+footer{
+    position: relative;
+    bottom: 10cm;
+    height: 1cm;
+    width: 100%;
+    background-color: #C2C3F8;
+    border: 2px solid #5756FF;
+}
+
+
+

@@ -1,0 +1,27 @@
+*{/*Selector universal*/
+    font-family: 'Courier New', 
+    Courier, monospace;
+    color: slategray
+}    
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    color:peru;
+    text-decoration: underline;
+    text-shadow: green;
+}
+
+.text-italic{/*Selector por clase*/
+    font-style: italic;
+    color:tomato;
+}
+
+#main-header{/*selector por id*/
+    font-size: 3rem;
+    text-decoration: underline;
+}
+
+section{
+    background-color: yellowgreen;
+    inline-size: 20rem;
+}

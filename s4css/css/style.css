@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+}
+
+.peru{
+    background-color: peru;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: royalblue;
+}
+
+.square-wrapper{
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333333;
+}
+.square-wrapper .square{
+    height: 100px;
+    width: 100px;
+}
+
+@media only screen and (min-width: 768px){
+    .square-wrapper{
+        height: 100px;
+        flex-direction: row;
+    }    
+    .peru{
+        background-color: green;
+    } 
+    .red{
+        background-color: blue;
+    }
+    .blue{
+        background-color: purple;
+    }
+    .square-wrapper .square{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+}
+
+
+@media only screen and (min-width: 1200px){
+    .square-wrapper{
+        height: 100px;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+    }  
+    .square-wrapper .square{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }      
+    .red{
+        display:none !important;
+    }

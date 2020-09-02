@@ -1,0 +1,143 @@
+.square-wrapper{
+    width:90%;
+    height:120px;
+    border:1px solid slategray;
+    margin-bottom:10px;
+}
+.square{
+    width:50px;
+    height:50px;
+    border:1px solid blue;
+}
+/*vw = viewport width*/
+.square.red{
+    background:red;
+}
+.square.blue{
+    background:blueviolet
+}
+.square.green{
+    background:green
+}
+#some-id{
+    background:slategray;
+}
+.square.peru{
+    background:peru
+}
+.d-flex{
+    display:flex;
+}
+.end{
+    justify-content: flex-end;
+}
+.center{
+    justify-content: center;
+}
+.around{
+    justify-content: space-around;
+}
+.between{
+    justify-content: space-between;
+}
+.evenly{
+    justify-content: space-evenly;
+}
+.texto-resaltado{
+    font-weight: bold;
+    font-style: italic;
+    background:rgba(0,150,0,.5)
+}
+.data-form{
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid #ccc;
+    border-radius:10px;
+    padding:30px;
+}
+.data-form .input-group{
+    width:100%;
+    margin-bottom:10px;
+}
+.data-form .input-group label{
+    font-weight: bold;
+    font-size:1.25rem;
+    margin-bottom:10px;
+}
+.data-form .input-group input{
+    width: 100%;
+    height:30px;
+    border:1px solid #dadada;
+    border-radius:4px;
+}
+
+
+
+
+
+21:06
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!--div class="square-wrapper">
+        <div class="square">Cuadro</div>
+        <div class="square">Cuadro</div>
+        <div class="square">Cuadro</div>
+    </div-->
+    <div class="square-wrapper d-flex end">
+        <div class="square red">Cuadro 1</div>
+        <div class="square blue">Cuadro 2</div>
+        <div class="square green">Cuadro 3</div>
+        <div id="some-id" class="square peru">Cuadro 4</div>
+    </div>
+    <div class="square-wrapper d-flex center">
+        <div class="square red">Cuadro 1</div>
+        <div class="square blue">Cuadro 2</div>
+        <div class="square green">Cuadro 3</div>
+        <div id="some-id" class="square peru">Cuadro 4</div>
+    </div>
+    <div class="square-wrapper d-flex around">
+        <div class="square red">Cuadro 1</div>
+        <div class="square blue">Cuadro 2</div>
+        <div class="square green">Cuadro 3</div>
+        <div id="some-id" class="square peru">Cuadro 4</div>
+    </div>
+    <div class="square-wrapper d-flex evenly">
+        <div class="square red">Cuadro 1</div>
+        <div class="square blue">Cuadro 2</div>
+        <div class="square green">Cuadro 3</div>
+        <div id="some-id" class="square peru">Cuadro 4</div>
+    </div>
+    <div class="square-wrapper d-flex between">
+        <div class="square red">Cuadro 1</div>
+        <div class="square blue">Cuadro 2</div>
+        <div class="square green">Cuadro 3</div>
+        <div id="some-id" class="square peru">Cuadro 4</div>
+    </div>
+    <input type="text">
+    <form class="data-form" action="">
+        <div class="input-group">
+            <label for="" class="texto-resaltado">Nombre</label>
+            <input type="text">
+        </div>
+        <div class="input-group">
+            <label for="" class="texto-resaltado">Dirección</label><input type="text">
+        </div>
+        <div class="input-group">
+            <label for="">Email</label>
+            <input type="text">
+        </div>
+        <button>Save data</button>
+    </form>
+    <form action="" class="data-form">
+        <div class="input-group"><input type="text"></div>
+    </form>
+</body>
+</html>

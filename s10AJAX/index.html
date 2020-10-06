@@ -1,0 +1,26 @@
+<script>
+    /*La función sirve para imprimir la salida en consola*/
+    function imprimir () {
+    console.log(this.responseText);
+}
+
+
+
+
+/*
+var http = new XMLHttpRequest();
+http.addEventListener("load", imprimir);
+http.open("GET", "https://dixketl.com/ajax/datos.php");
+http.send();
+*/
+
+/*Objeto que guarda datos a enviar*/
+var data = {name: "-MGfcJvWi5wzVxVSBJcz"}
+
+var http = new XMLHttpRequest();
+http.addEventListener("load", imprimir);
+http.open("GET", "https://ajaxclass9g.firebaseio.com/-MGfcJvWi5wzVxVSBJcz/.json");
+http.send();
+
+
+</script>

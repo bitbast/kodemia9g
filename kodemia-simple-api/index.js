@@ -1,6 +1,12 @@
+const { request, response } = require('express')
 const express = require('express')
 const app = express()
 app.use(express.json())
+app.use((request, response, next) => {
+  console.log('Middleware a nivel de app')
+  next()
+})
+
 let koders = [
   {
     id: 1,
@@ -13,38 +19,55 @@ let koders = [
     name: 'Haro'
   }
 ]
-app.get('/koders', (request, response) => {
-  console.log('get a koders')
-  response.json({
-    success: true,
-    data: {
-      koders: koders
+app.get('/koders',
+  (request, response, next) => {
+    console.log('HOLA SOY EL MIDDLEWARE DE GET KODERS')
+    if (request.headers.authorization) {
+      next()
+    } else {
+      response.status(401)
+      response.json({
+        message: 'not authorized'
+      })
     }
-  })
-})
-// GET /koders/1 -> id = 1
-// GET /kdoers/4 -> id = 4
-// GET /koders/123 -> id = 123
-app.get('/koders/:id', (request, response) => {
-  const id = request.params.id
-  const koderFound = koders.find((koder) => {
-    return koder.id === parseInt(id)
-  })
-  if (koderFound) {
+  },
+  (request, response) => {
+    console.log('get a koders')
     response.json({
       success: true,
       data: {
-        koder: koderFound
+        koders: koders
       }
     })
-  } else {
-    response.status(404)
-    response.json({
-      success: false,
-      message: 'koder not found'
+  })
+// GET /koders/1 -> id = 1
+// GET /kdoers/4 -> id = 4
+// GET /koders/123 -> id = 123
+app.get('/koders/:id',
+  (request, response, next) => {
+    console.log('Middleware de get by id')
+    next()
+  },
+  (request, response) => {
+    const id = request.params.id
+    const koderFound = koders.find((koder) => {
+      return koder.id === parseInt(id)
     })
-  }
-})
+    if (koderFound) {
+      response.json({
+        success: true,
+        data: {
+          koder: koderFound
+        }
+      })
+    } else {
+      response.status(404)
+      response.json({
+        success: false,
+        message: 'koder not found'
+      })
+    }
+  })
 app.post('/koders', (request, response) => {
   console.log(request.body)
   request.body.koders.forEach((koder, index) => {
@@ -55,24 +78,26 @@ app.post('/koders', (request, response) => {
     koders.push(newKoder)
   })
 })
-app.patch('/koders/:id', (request, response) => {
-  const id = parseInt(request.params.id)
-  koders = koders.map((koder) => {
-    if (koder.id === id) {
-      koder.name = request.body.name
-    }
-    return koder
+app.patch('/koders/:id',
+  (request, response) => {
+    const id = parseInt(request.params.id)
+    koders = koders.map((koder) => {
+      if (koder.id === id) {
+        koder.name = request.body.name
+      }
+      return koder
+    })
+    response.json({
+      success: true,
+      message: 'Koder actualizado',
+      data: {
+        koders
+      }
+    })
   })
-  response.json({
-    success: true,
-    message: 'Koder actualizado',
-    data: {
-      koders
-    }
-  })
-})
 app.delete('/koders/:id', (request, response) => {
   const id = parseInt(request.params.id)
+
   koders = koders.filter((koder) => {
     return koder.id !== id
   })
@@ -102,3 +127,5 @@ DELETE /chelas/:id
     precio: 30
 }
 */
+
+

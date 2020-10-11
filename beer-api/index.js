@@ -7,7 +7,7 @@ app.use(express.json())
 
 const port = 8080
 
-const beers = [
+let beers = [
     {
         id: 'abc123',
         marca: 'corona',
@@ -43,6 +43,27 @@ app.get('/beers', (request, response) =>{
     })
 })
 
+app.get('/beers/:id', (request, response) => {
+    const id = request.params.id
+    const beerFound = beers.find((beer) => {
+        return beer.id === id
+    })
+    if (beerFound){
+        response.json({
+            success:true,
+            data: {
+                beer: beerFound
+            }
+        })
+    } else {
+        response.status(404)
+        response.jason({
+            success: false,
+            message: "beer not found"
+        })
+    }
+})
+
 app.post('/beers', (request, response) =>{
     beers.push(request.body)
     response.json({
@@ -53,6 +74,36 @@ app.post('/beers', (request, response) =>{
     })
 })
 
+app.patch('/beers/:id', (request, response) => {
+    const id = request.params.id
+    beers = beers.map((beer) => {
+        if (beer.id === id ) {
+        beer.marca = request.body.marca
+        }
+        return beer 
+    })
+    response.json({
+        success: true,
+        message: 'Beer updated',
+        data: {
+            beers
+        }
+    })
+})
+
+app.delete('/beers/:id', (request, response) => {
+    const id = request.params.id
+    beers = beers.filter((beer) => {
+        return beer.id !== id
+    })
+    response.json({
+        success: true,
+        message: 'beer deleted',
+        data: {
+            beers
+        }
+    })
+})
 
 app.listen(port, () => {
     console.log('Server is listening in port 8080')

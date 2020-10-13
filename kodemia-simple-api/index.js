@@ -45,7 +45,7 @@ app.get('/koders',
 // GET /koders/123 -> id = 123
 app.get('/koders/:id',
   (request, response, next) => {
-    console.log('Middleware de get by id')
+    console.log(`${request.method}: ${request.url}`)
     next()
   },
   (request, response) => {
@@ -68,16 +68,21 @@ app.get('/koders/:id',
       })
     }
   })
-app.post('/koders', (request, response) => {
-  console.log(request.body)
-  request.body.koders.forEach((koder, index) => {
-    const newKoder = {
-      id: koders.length + 1,
-      name: koder.name
-    }
-    koders.push(newKoder)
+app.post('/koders',
+  (request, response, next) => {
+    console.log(`${request.method}: ${request.url}`)
+    next()
+  },
+  (request, response) => {
+    console.log(request.body)
+    request.body.koders.forEach((koder, index) => {
+      const newKoder = {
+        id: koders.length + 1,
+        name: koder.name
+      }
+      koders.push(newKoder)
+    })
   })
-})
 app.patch('/koders/:id',
   (request, response) => {
     const id = parseInt(request.params.id)
@@ -127,5 +132,3 @@ DELETE /chelas/:id
     precio: 30
 }
 */
-
-

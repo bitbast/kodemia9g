@@ -1,0 +1,21 @@
+{
+  "name": "taco-api-mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.5",
+    "standard": "^14.3.4"
+  },
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "standard --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

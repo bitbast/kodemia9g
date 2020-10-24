@@ -1,7 +1,12 @@
 
+const { request, response } = require('express')
 const express = require('express')
 
 const app = express()
+
+
+
+app.use(express.json()) //No sirve para que la info que se solicita en los request , se vuelvan json, ya que vienen en string (aunue traen una estructura tipo json)
 
 const tacos = [
   {
@@ -69,6 +74,10 @@ app.get('/tacos/:id', (request, response) => {
       }
     })
   }
+})
+
+app.post('/tacos', (request, response) =>{
+  request.body.
 })
 
 app.listen(8080, () => {
